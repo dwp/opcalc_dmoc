@@ -1,0 +1,216 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Case overview – OpCalc – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {{ dwpHeader({
+    serviceName: "OpCalc",
+    serviceHref: "/landingpage",
+    container: true
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "About this website",
+      items: [
+        {
+          href: "#",
+          text: "Accessibility statement"
+        },
+        {
+          href: "#",
+          text: "Privacy notice"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "OpCalc",
+        href: "/landingpage"
+      },
+      {
+        text: "Case overview"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ dwpQuickReference({
+        primaryReference: {
+          text: "Case reference",
+          value: "AB 12 34 56 C"
+        },
+        secondaryReference: {
+          text: "Customer name",
+          value: "Mr Max Martin"
+        },
+        status: {
+          text: "Status",
+          value: "In progress",
+          classes: "govuk-tag--light-blue"
+        }
+      }) }}
+
+      <h1 class="govuk-heading-l">
+        Case overview
+      </h1>
+
+      <p>
+        Complete each section below. Your answers are saved as you go.
+      </p>
+
+      {{ govukTaskList({
+        idPrefix: "case-overview",
+        items: [
+          {
+            title: {
+              text: "Customer details"
+            },
+            href: "#",
+            status: {
+              text: "Completed"
+            }
+          },
+          {
+            title: {
+              text: "A14 forms"
+            },
+            href: "#",
+            status: {
+              text: "Completed"
+            }
+          },
+          {
+            title: {
+              text: "QB16 entry details"
+            },
+            hint: {
+              text: "Record periods where the amount paid was different from the amount due"
+            },
+            href: "/qb16listofentries",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: {
+              text: "Diminishing capital calculation"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: {
+              text: "QB33 entry details"
+            },
+            href: "#",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--blue"
+              }
+            }
+          },
+          {
+            title: {
+              text: "BA3 entry details"
+            },
+            hint: {
+              text: "Not needed for this benefit type"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "govuk-task-list__status--cannot-start-yet"
+            }
+          },
+          {
+            title: {
+              text: "Family credit calculations"
+            },
+            hint: {
+              text: "Not needed for this benefit type"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "govuk-task-list__status--cannot-start-yet"
+            }
+          },
+          {
+            title: {
+              text: "Housing cost loans"
+            },
+            hint: {
+              text: "Not needed for this benefit type"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "govuk-task-list__status--cannot-start-yet"
+            }
+          },
+          {
+            title: {
+              text: "Average hours calculation"
+            },
+            hint: {
+              text: "Not needed for this benefit type"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "govuk-task-list__status--cannot-start-yet"
+            }
+          },
+          {
+            title: {
+              text: "Average earnings calculation"
+            },
+            hint: {
+              text: "Not needed for this benefit type"
+            },
+            status: {
+              text: "Cannot start yet",
+              classes: "govuk-task-list__status--cannot-start-yet"
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        This case
+      </h2>
+
+      <ul class="govuk-list">
+        <li><a class="govuk-link" href="/qb16caseprintselection">Print PDFs for this case</a></li>
+        <li><a class="govuk-link" href="/exportacase">Export this case</a></li>
+        <li><a class="govuk-link" href="/landingpage">Close case</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}
