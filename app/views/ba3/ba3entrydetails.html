@@ -108,6 +108,8 @@
           ]
         }) }}
 
+     <p class="govuk-body"><b>Total:</b> Weeks 0 Days 0</p>
+
         <h2 class="govuk-heading-m">Income</h2>
 
         {{ govukInput({
@@ -140,95 +142,48 @@
           value: data.grossCorrect
         }) }}
 
-        <h2 class="govuk-heading-m">Options for this entry</h2>
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="more-detail">
+    Dates worked and hours for each day
+  </label>
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5"></textarea>
+</div>
 
-        {{ govukCheckboxes({
-          idPrefix: "taxable",
-          name: "taxable",
-          items: [
-            {
-              value: "taxable",
-              text: "This benefit is taxable",
-              id: "taxable",
-              checked: data.taxable,
-              conditional: {
-                html: govukInput({
-                  label: {
-                    text: "Personal allowance"
-                  },
-                  prefix: {
-                    text: "£"
-                  },
-                  id: "personal-allowance",
-                  name: "personalAllowance",
-                  classes: "govuk-input--width-10",
-                  inputmode: "decimal",
-                  spellcheck: false,
-                  value: data.personalAllowance
-                }) + govukInput({
-                  label: {
-                    text: "Taxable in gross excess"
-                  },
-                  prefix: {
-                    text: "£"
-                  },
-                  id: "taxable-gross-excess",
-                  name: "taxableGrossExcess",
-                  classes: "govuk-input--width-10",
-                  inputmode: "decimal",
-                  spellcheck: false,
-                  value: data.taxableGrossExcess
-                })
-              }
-            }
-          ]
+ <h2 class="govuk-heading-m">Paid</h2>
+
+        {{ govukInput({
+          label: {
+            text: "Amount on B2/C2"
+          },
+          prefix: {
+            text: "£"
+          },
+          id: "gross-incorrect",
+          name: "grossIncorrect",
+          classes: "govuk-input--width-10",
+          inputmode: "decimal",
+          spellcheck: false,
+          value: data.grossIncorrect
         }) }}
 
-        {{ govukCheckboxes({
-          idPrefix: "underpaid",
-          name: "underpaid",
-          items: [
-            {
-              value: "underpaid",
-              text: "This is an underpayment",
-              id: "underpaid",
-              checked: data.underpaid,
-              conditional: {
-                html: govukInput({
-                  label: {
-                    text: "Net incorrect"
-                  },
-                  prefix: {
-                    text: "£"
-                  },
-                  id: "net-incorrect",
-                  name: "netIncorrect",
-                  classes: "govuk-input--width-10",
-                  inputmode: "decimal",
-                  spellcheck: false,
-                  value: data.netIncorrect
-                }) + govukInput({
-                  label: {
-                    text: "Net correct"
-                  },
-                  prefix: {
-                    text: "£"
-                  },
-                  id: "net-correct",
-                  name: "netCorrect",
-                  classes: "govuk-input--width-10",
-                  inputmode: "decimal",
-                  spellcheck: false,
-                  value: data.netCorrect
-                })
-              }
-            }
-          ]
+        {{ govukInput({
+          label: {
+            text: "Amount on D2"
+          },
+          prefix: {
+            text: "£"
+          },
+          id: "gross-correct",
+          name: "grossCorrect",
+          classes: "govuk-input--width-10",
+          inputmode: "decimal",
+          spellcheck: false,
+          value: data.grossCorrect
         }) }}
 
-        <!-- <h2 class="govuk-heading-m">Discrepancy period</h2> -->
+     <p class="govuk-body"><b>Balance payable:</b> £0.00</p>
 
-
+      
         <h2 class="govuk-heading-m">Overpayment calculation</h2>
 
         {{ govukInsetText({
@@ -237,11 +192,39 @@
 
         {{ govukSummaryList({
           rows: [
-            { key: { text: "Incorrect amount paid" }, value: { text: "£0.00 weekly" } },
-            { key: { text: "Less correct amount due" }, value: { text: "£0.00 weekly" } },
-            { key: { text: "Over or underpayment" }, value: { text: "£0.00 weekly" } }
+            { key: { text: "Amount due" }, value: { text: "£0.00" } },
+            { key: { text: "Amount on D2" }, value: { text: "£0.00" } },
+            { key: { text: "Balance due" }, value: { text: "£0.00" } }
           ]
         }) }}
+
+        <h2 class="govuk-heading-m">A14(s)</h2>
+
+         {% set entryHead = [
+            { text: "Date" }, { text: "Amount" }, { text: "From" }, { text: "To" }, { text: "Uprating" }
+          ] %}
+
+          {% if data.grossCorrect %}
+            {% set _ = entryHead.push({ text: "Actions" }) %}
+          {% endif %}
+
+          {{ govukTable({
+            head: entryHead,
+            rows: [
+              [
+                { text: data["qb16From-day"] + "/" + data["qb16From-month"] + "/" + data["qb16From-year"] },
+                { text: data["qb16To-day"] + "/" + data["qb16To-month"] + "/" + data["qb16To-year"] },
+                { text: "1996 wks 5 dys" },
+                { text: "QB16" },
+                { text: "£" + data.grossIncorrect },
+                { text: "£" + data.grossCorrect },
+                { text: "£0.00" },
+                { html: '<a class="govuk-link" href="/qb16entrydetails?returnTo=/qb16listofentries%23list-of-entries">Edit<span class="govuk-visually-hidden"> this entry</span></a> | <a class="govuk-link" href="/qb16deleteentry">Delete<span class="govuk-visually-hidden"> this entry</span></a>' }
+              ]
+            ] if data.grossCorrect else [
+              [{ html: '<span class="govuk-hint">No entries recorded</span>' }, { text: "" }, { text: "" }, { text: "" }, { text: "" }]
+            ]
+          }) }}
 
         <div class="govuk-button-group">
           {{ govukButton({
