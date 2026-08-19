@@ -1,13 +1,43 @@
 {% extends "layouts/main.html" %}
  
 {% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start page – OpCalc – GOV.UK Prototype Kit
 {% endblock %}
- 
+
+{% block header %}
+  {{ dwpHeader({
+    serviceName: "OpCalc",
+    serviceHref: "/",
+    container: true
+  }) }}
+{% endblock %}
+
 {% block containerStart %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:window.history.back()"
+    href: "/case-overview-confirmation.html"
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "About this website",
+      items: [
+        {
+          href: "#",
+          text: "Accessibility statement"
+        },
+        {
+          href: "#",
+          text: "Privacy notice"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        }
+      ]
+    }
   }) }}
 {% endblock %}
  
@@ -20,15 +50,13 @@
         Case Overview
       </h1>
 
-      <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Reference: J Smith from 01/04/2023 to 04/11/2025</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Type</th>
-      <th scope="col" class="govuk-table__header">Status</th>
-    </tr>
-  </thead>
-</table>
+    <h2 class="govuk-heading-m">
+        Reference
+      </h2>
+ 
+      <p>
+        J Smith from 01/04/2023 to 04/11/2025
+      </p>
 
       <ul class="govuk-task-list">
       
@@ -46,7 +74,7 @@
   </li>
   <li class="govuk-task-list__item govuk-task-list__item--with-link">
     <div class="govuk-task-list__name-and-hint">
-      <a class="govuk-link govuk-task-list__link" href="/A14/newform.ht" aria-describedby="company-details-2-status">
+      <a class="govuk-link govuk-task-list__link" href="/A14/newform" aria-describedby="company-details-2-status">
         A14 Forms
       </a>
     </div>
@@ -58,7 +86,7 @@
   </li>
   <li class="govuk-task-list__item govuk-task-list__item--with-link">
     <div class="govuk-task-list__name-and-hint">
-      <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-3-hint company-details-3-status">
+      <a class="govuk-link govuk-task-list__link" href="/ba3/ba3entries" aria-describedby="company-details-3-hint company-details-3-status">
         BA3 Entry Details
       </a>
       <!-- <div id="company-details-3-hint" class="govuk-task-list__hint">

@@ -58,10 +58,10 @@
     <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">
-        BA3
+        BA3: 10/07/2015 to 16/07/2026
       </h1>
 
-      <p class="govuk-body">BA3: 10/07/2015 to 16/07/2026</p>
+      <!-- <p class="govuk-body">BA3: 10/07/2015 to 16/07/2026</p> -->
 
       <form action="/landingpagewithqb16entrydetailsfilledin" method="post">
 
@@ -83,13 +83,13 @@
             head: entryHead,
             rows: [
               [
-                { text: data["qb16From-day"] + "/" + data["qb16From-month"] + "/" + data["qb16From-year"] },
-                { text: data["qb16To-day"] + "/" + data["qb16To-month"] + "/" + data["qb16To-year"] },
-                { text: "1996 wks 5 dys" },
-                { text: "QB16" },
-                { text: "£" + data.grossIncorrect },
-                { text: "£" + data.grossCorrect },
-                { text: "£0.00" },
+                { text: "No entries recorded" },
+                { text: "" },
+                { text: "" },
+                { text: "" },
+                { text: "" },
+                { text: "" },
+                { text: "" },
                 { html: '<a class="govuk-link" href="/qb16entrydetails?returnTo=/qb16listofentries%23list-of-entries">Edit<span class="govuk-visually-hidden"> this entry</span></a> | <a class="govuk-link" href="/qb16deleteentry">Delete<span class="govuk-visually-hidden"> this entry</span></a>' }
               ]
             ] if data.grossCorrect else [
@@ -97,7 +97,7 @@
             ]
           }) }}
 
-          <p class="govuk-body"><a class="govuk-link" href="/qb16entrydetails?returnTo=/qb16listofentries%23list-of-entries">New entry</a></p>
+          <p class="govuk-body"><a class="govuk-link" href="/ba3/ba3entrydetails">New entry</a></p>
 
         {% endset %}
 
