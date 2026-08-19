@@ -1,38 +1,49 @@
 {% extends "layouts/main.html" %}
- 
+
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start page – OpCalc – GOV.UK Prototype Kit
 {% endblock %}
- 
+
 {% block header %}
-  <header>
-    {{govukHeader()}}
-  </header>
-{% endblock %}
- 
-{% block containerStart %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: "Home",
-        href: "#"
-      },
-      {
-        text: "OpCalc",
-        href: "#"
-      }
-    ]
+  {{ dwpHeader({
+    serviceName: "OpCalc",
+    serviceHref: "/",
+    container: true
   }) }}
 {% endblock %}
- 
+
+{% block footer %}
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "About this website",
+      items: [
+        {
+          href: "#",
+          text: "Accessibility statement"
+        },
+        {
+          href: "#",
+          text: "Privacy notice"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
 {% block content %}
- 
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
- 
+
       <h1 class="govuk-heading-xl">
-        Welcome to OpCalc
+        OpCalc
       </h1>
+
+      <p>Use OpCalc to work out a customer's benefit entitlement based on their income, savings and household circumstances.</p>
  
       <p>Use this service to:</p>
  

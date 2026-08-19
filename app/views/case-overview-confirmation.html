@@ -1,13 +1,43 @@
 {% extends "layouts/main.html" %}
- 
+
 {% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start page – OpCalc – GOV.UK Prototype Kit
 {% endblock %}
- 
+
+{% block header %}
+  {{ dwpHeader({
+    serviceName: "OpCalc",
+    serviceHref: "/",
+    container: true
+  }) }}
+{% endblock %}
+
 {% block containerStart %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:window.history.back()"
+    href: "/case-overview-confirmation.html"
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "About this website",
+      items: [
+        {
+          href: "#",
+          text: "Accessibility statement"
+        },
+        {
+          href: "#",
+          text: "Privacy notice"
+        },
+        {
+          href: "#",
+          text: "Cookies"
+        }
+      ]
+    }
   }) }}
 {% endblock %}
  
@@ -57,7 +87,7 @@
   </li>
   <li class="govuk-task-list__item govuk-task-list__item--with-link">
     <div class="govuk-task-list__name-and-hint">
-      <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-2-status">
+      <a class="govuk-link govuk-task-list__link" href="/A14/newform.html" aria-describedby="company-details-2-status">
         A14 Forms
       </a>
     </div>
