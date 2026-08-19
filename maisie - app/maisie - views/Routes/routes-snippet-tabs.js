@@ -17,7 +17,3 @@
 router.post('/return-to-tab', function (req, res) {
   const destination = req.session.data['returnTo']
 
-  // Fall back to the case overview if a page forgot its returnTo field, so a
-  // missing value never leaves someone stranded.
-  res.redirect(destination || '/opcalctype')
-})

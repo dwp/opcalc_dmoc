@@ -588,6 +588,4 @@ router.get('/dccesa-delete-:key', function (req, res) {
   data[arrayName] = (data[arrayName] || []).filter(function (row, i) {
     return String(i) !== String(index)
   })
-
-  res.redirect('/dccesa#' + tabs[req.params.key])
 })
